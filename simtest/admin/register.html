@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="kr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>register</title>
+    <link href="/css/admin.css" rel="stylesheet" type="text/css">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+    <header>
+      <h1 class="inline"><a href="/">메인</a> 등록페이지</h1>
+
+    </header>
+    <div class="container-fluid">
+      <div class="row-fluid main">
+        <form class="" action="proc/register.php" method="post">
+          <legend>등록</legend>
+          <label>설문 이름</label>
+          <input name="title" type="text" placeholder="유의사항">
+          <label>유의사항</label>
+          <textarea name="warn" rows="10" style="width:50%"></textarea>
+
+          <legend>문항</legend>
+          <label>문항 갯수</label>
+          <input name="selectNo" type="text" placeholder="문항 갯수"><button type="button" id="button1">확인</button>
+          <label>문항</label>
+          <ul id="select">
+          </ul>
+
+          <legend>결과</legend>
+          <label>결과 갯수</label>
+          <input name="resultNo" type="text" placeholder="결과 갯수"><button type="button" id="button2">확인</button>
+          <label>결과</label>
+          <ul id="result">
+          </ul>
+          <p><button type="submit" class="btn">전송</button></p>
+        </form>
+      </div>
+      <div class="row">
+        <div class="span12 footer">
+          footer
+        </div>
+      </div>
+    </div>
+    <script>
+      $('button#button1').click(function(event){
+          var input = document.getElementsByName('selectNo');
+          for(var i=0; i < input[0].value; i++){
+            $('ul#select').append("<li><input name='select"+i+"' type='text' style='width:50%' placeholder='문항 내용'></li>");
+          }
+      });
+      $('button#button2').click(function(event){
+          var input = document.getElementsByName('resultNo');
+          for(var i=0; i < input[0].value; i++){
+            $('ul#result').append("<li><input name='result"+i+"' type='text' style='width:50%' placeholder='결과'></li>");
+            $('ul#result').append("<li><input name='resultarticle"+i+"' type='text' style='width:50%' placeholder='결과 내용'></li>");
+            $('ul#result').append("<li><input name='resultrate"+i+"' type='text' style='width:50%' placeholder='최소 점수'></li>");
+            $('ul#result').append("<hr>");
+          }
+      });
+
+    </script>
+  </body>
+</html>

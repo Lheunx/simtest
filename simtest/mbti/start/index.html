@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="kr" >
+  <head>
+    <meta charset="utf-8">
+    <title>심리테스트</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+
+      <header>
+        <h1>심리테스트</h1>
+        <div class="otherSite">
+          <button type="button" class="otherSite btn3">다른테스트</button>
+        </div>
+      </header>
+      <div class="container">
+      <section>
+        <main>
+          <div class="text-right">1/4</div>
+          <div class="progress">
+            <div class="bar" style="width:25%;" ></div>
+            <!-- <div class="bar" style="width:50%;" ></div> -->
+          </div>
+          <div class="testBox">
+            <div>
+              <form class="form" action="../result/" method="get">
+                <p id="radio1">
+                </p>
+                <p id="radio2" style="display:none">
+                </p>
+                <p id="radio3" style="display:none">
+                </p>
+                <p id="radio4" style="display:none">
+                </p>
+                <button class="btn3" type="button" id="next">다음페이지</button>
+              </form>
+              <script src="https://code.jquery.com/jquery.js"></script>
+              <script src="/js/bootstrap.min.js"></script>
+              <script type="text/javascript">
+               <?php include("proc_start_return.php");
+               ?>
+
+
+                // for (var i = 0; i < <?echo $num?>+1/4; i++) {
+                //   var data = '#q'+i;
+                //   var data1= 'q'+i;
+                //   $( data+' .radio1 input').attr('name',data1);
+                //   if(i > <?echo mysqli_num_rows($result)?>/4){
+                //     var target = '#q'+i;
+                //     $(target).toggle();
+                //   }
+               //  }
+               var a = 1;
+                $('button#next').click(function(event) {
+                  var target1 = $('button#next').attr('type');
+                  a+=1;
+                  $('div.text-right').text(a+'/4');
+                  $('div.bar').attr('style','width:'+(a*25)+'%');
+                  if(a>4){
+                    $('button#next').attr('type','submit');
+                    $('button#next').text('제출');
+                  }
+                  else {
+                    var target = '#radio'+a;
+                    $(target).toggle();
+                    var target = '#radio'+(a-1);
+                    $(target).toggle();
+                    event.preventDefault();
+                  }
+                })
+              </script>
+              </div>
+          </div>
+
+        </main>
+      </section>
+      <footer>저작권 임흥현</footer>
+    </div>
+  </body>
+</html>
